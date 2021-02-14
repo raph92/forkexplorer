@@ -105,11 +105,14 @@ def cli(
     for fork in track(forks, description=f'Searching {len(forks)} forks...'):
         try:
             date = get_last_commit_date(fork, driver, timeout)
-            if not latest or latest[1] < date:
+            print_friendly_date = date
+            if humanize:
+                print_friendly_date = Arrow.fromdate(date).humanize()
+            if not latest:
                 latest = (fork, date)
-                print_friendly_date = date
-                if humanize:
-                    print_friendly_date = Arrow.fromdate(date).humanize()
+                print('First date found:', fork, print_friendly_date)
+            elif latest[1] < date:
+                latest = (fork, date)
                 print('A more recent fork found:', fork, print_friendly_date)
         except RetryError:
             print("Couldn't find date for", fork)
