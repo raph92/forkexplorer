@@ -20,7 +20,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from tenacity import RetryError
 
 traceback.install(
     show_locals=True,
@@ -103,19 +102,16 @@ def cli(
     forks = get_fork_links(fork_page)
     latest = None
     for fork in track(forks, description=f'Searching {len(forks)} forks...'):
-        try:
-            date = get_last_commit_date(fork, driver, timeout)
-            print_friendly_date = date
-            if humanize:
-                print_friendly_date = Arrow.fromdate(date).humanize()
-            if not latest:
-                latest = (fork, date)
-                print('Original repo and date:', fork, print_friendly_date)
-            elif latest[1] < date:
-                latest = (fork, date)
-                print('A more recent fork found:', fork, print_friendly_date)
-        except RetryError:
-            print("Couldn't find date for", fork)
+        date = get_last_commit_date(fork, driver, timeout)
+        print_friendly_date = date
+        if humanize:
+            print_friendly_date = Arrow.fromdate(date).humanize()
+        if not latest:
+            latest = (fork, date)
+            print('Original repo and date:', fork, print_friendly_date)
+        elif latest[1] < date:
+            latest = (fork, date)
+            print('A more recent fork found:', fork, print_friendly_date)
 
 
 def main():
