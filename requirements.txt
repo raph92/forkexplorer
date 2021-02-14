@@ -1,0 +1,13 @@
+click
+requests~=2.25.1
+selenium~=3.141.0
+geckodriver-autoinstaller
+python-dateutil~=2.8.1
+rich~=9.10.0
+arrow~=0.17.0
+typer~=0.3.2
+fake_headers~=1.0.2
+beautifulsoup4~=4.9.3
+tenacity~=6.3.1
+diskcache~=5.2.1
+pytest
