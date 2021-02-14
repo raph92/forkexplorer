@@ -110,7 +110,7 @@ def cli(
                 print_friendly_date = Arrow.fromdate(date).humanize()
             if not latest:
                 latest = (fork, date)
-                print('First date found:', fork, print_friendly_date)
+                print('Original repo and date:', fork, print_friendly_date)
             elif latest[1] < date:
                 latest = (fork, date)
                 print('A more recent fork found:', fork, print_friendly_date)
