@@ -2,7 +2,7 @@
 Find the latest fork of a Github repo
 
 ## Goal
-The goal of this project is to make it simple to find the latest commit of a repo. 
+The goal of this project is to make it simple to find the latest commit of a repo. This is particularly useful for abandoned repos.
 
 ## How to use
 ```
