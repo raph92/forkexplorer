@@ -15,7 +15,7 @@ from forkexplorer import (
 NETWORK_URL = 'https://github.com/emirozer/fake2db/network/members'
 REPO_URL = 'https://github.com/emirozer/fake2db'
 
-forks_list = []  # to prevent too many calls to github
+forks_list = []  # prevent unnecessary calls to github
 
 
 @pytest.fixture()
