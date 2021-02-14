@@ -118,5 +118,9 @@ def cli(
             print("Couldn't find date for", fork)
 
 
+def main():
+    typer.run(cli)
+
+
 if __name__ == '__main__':
     typer.run(cli)

@@ -6,10 +6,10 @@ from random import choice
 import pytest
 
 from forkexplorer import (
+    setup_driver,
     get_fork_links,
     get_last_commit_date,
     normalize_link,
-    setup_driver,
 )
 
 NETWORK_URL = 'https://github.com/emirozer/fake2db/network/members'
