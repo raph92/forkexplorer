@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from diskcache import Index
 from fake_headers import Headers
-from requests_html import HTMLSession
 from rich import traceback
 from rich.progress import track
 from selenium import webdriver
@@ -32,7 +31,6 @@ header = Headers(
 ).generate()
 
 cache = Index('./cache')
-session = HTMLSession()
 
 
 def setup_driver(headless: bool):
