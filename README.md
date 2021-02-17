@@ -27,7 +27,7 @@ Options:
 python forkexplorer.py  https://github.com/psf/requests-html/network/members -h
 
 ```
-<img src="https://i.imgur.com/ML2vhkr.png" weight="400" />
+<img alt="example of usage" src="https://i.imgur.com/ML2vhkr.png" />
 
 ## Upcoming Features
 - ~~Display number of commits ahead of master~~
