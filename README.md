@@ -6,7 +6,7 @@ The goal of this project is to make it simple to find the latest commit of a rep
 
 ## How to use
 ```
-Usage: forkexplorer.py [OPTIONS] URL
+Usage: forkexplorer [OPTIONS] URL
 
 Arguments:
   URL  The Github repo or the fork page URL  [required]
@@ -20,6 +20,9 @@ Options:
 
   --headless / --no-headless      If passed, the program will run selenium in
                                   headless mode  [default: True]
+
+  -s, --show-all                  Show all forks whether or not it is the most
+                                  recent.  [default: False]
 ```
 
 ## Example
@@ -27,7 +30,7 @@ Options:
 python forkexplorer.py  https://github.com/psf/requests-html/network/members -h
 
 ```
-<img alt="example of usage" src="https://i.imgur.com/ML2vhkr.png" />
+<img alt="example of usage" src="https://i.imgur.com/qEPtgOF.png" />
 
 ## Upcoming Features
 - ~~Display number of commits ahead of master~~ ✅
