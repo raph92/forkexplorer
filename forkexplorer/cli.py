@@ -2,6 +2,7 @@ import glob
 import shutil
 from datetime import datetime
 from os.path import join
+from pathlib import Path
 from time import sleep
 from urllib.parse import urljoin
 
@@ -10,7 +11,7 @@ import requests
 import typer
 import re
 
-from appdirs import user_cache_dir
+from appdirs import user_cache_dir, user_data_dir
 from arrow import Arrow
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
@@ -39,19 +40,22 @@ cache = Index(join(user_cache_dir('forkexplorer', '1.0.0'), 'data'))
 console = Console()
 print = console.print
 
+GECKO_PATH = Path(user_data_dir('forkexplorer', '1.0.0'), 'bin', 'geckodriver')
+
 
 def setup_driver(headless: bool):
-    gecko_path = shutil.which("geckodriver") or shutil.which("geckodriver.exe")
-    if not gecko_path:
-        try:
-            gecko_path = glob.glob('*/*geckodriver')[0]
-        except IndexError:
-            print('Installing geckodriver...')
-            gecko_path = geckodriver_autoinstaller.install(True)
-            print('Installed geckodriver to', gecko_path)
+    gecko_path = Path(
+        shutil.which("geckodriver") or shutil.which("geckodriver.exe") or GECKO_PATH
+    )
+    if not gecko_path.exists():
+        print('Installing geckodriver...')
+        gecko_path = Path(geckodriver_autoinstaller.install(True))
+        gecko_path.replace(GECKO_PATH)
+        gecko_path.parent.unlink(missing_ok=True)
+        print('Installed geckodriver to', GECKO_PATH)
     options = Options()
     options.headless = headless
-    driver = webdriver.Firefox(options=options, executable_path=gecko_path)
+    driver = webdriver.Firefox(options=options, executable_path=str(gecko_path))
     return driver
 
 

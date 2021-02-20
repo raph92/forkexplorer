@@ -69,11 +69,8 @@ class Test:
         )
 
     def test_can_make_positivity_number_print_friendly(self):
-        assert get_print_friendly_commits(1) == '1 commit ahead'
-        assert get_print_friendly_commits(2) == '2 commits ahead'
-        assert get_print_friendly_commits(-1) == '1 commit behind'
-        assert get_print_friendly_commits(-2) == '2 commits behind'
+        assert get_print_friendly_commits(1) == '1 commit ahead of original'
+        assert get_print_friendly_commits(2) == '2 commits ahead of original'
+        assert get_print_friendly_commits(-1) == '1 commit behind original'
+        assert get_print_friendly_commits(-2) == '2 commits behind original'
         assert get_print_friendly_commits(0) == 'even commits'
-
-    def teardown_class(self):
-        shutil.rmtree('./cache')

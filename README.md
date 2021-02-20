@@ -27,8 +27,7 @@ Options:
 
 ## Example
 ```bash
-python forkexplorer.py  https://github.com/psf/requests-html/network/members -h
-
+forkexplorer  https://github.com/psf/requests-html/network/members
 ```
 <img alt="example of usage" src="https://i.imgur.com/qEPtgOF.png" />
 
