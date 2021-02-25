@@ -33,3 +33,4 @@ forkexplorer  https://github.com/psf/requests-html/network/members
 
 ## Upcoming Features
 - ~~Display number of commits ahead of master~~ ✅
+- Add ability to use multiple browsers
